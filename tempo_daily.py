@@ -70,6 +70,10 @@ def main():
     h = datetime.now(timezone.utc).hour
     if st["count"] >= DAILY_TARGET:
         print("daily target reached, idle"); return
+    # random gate: after an active burst, sleep a random 25-180 min (kills fixed-interval fingerprint)
+    if st.get("next_at") and time.time() < st["next_at"]:
+        mins = int((st["next_at"] - time.time()) / 60)
+        print(f"gated — next activity in ~{mins}m"); return
     if random.random() > human_hour_weight(h):
         print(f"hour {h}UTC — outside activity window, idle"); return
 
@@ -127,7 +131,7 @@ def main():
             log(f"mint ERR {str(e)[:100]}")
         time.sleep(random.uniform(20, 90))
 
-    TOKENS = [ALPHA, USD0] + ([st["token"]] if st.get("minted") else [])
+    TOKENS = [ALPHA, USD0] + ([st["token"]] if st.get("fee_liq") else [])
 
     burst = random.choices([1,2,3,4,5], weights=[30,28,20,12,10])[0]
     done = 0
@@ -214,8 +218,13 @@ def main():
     # occasional faucet top-up
     if random.random() < 0.12:
         faucet(me)
+    if burst > 0:
+        # gate after any attempted run (success or fail) — random 25-180 min
+        st["next_at"] = int(time.time() + random.uniform(25, 180) * 60)
     save(st)
-    print(f"RUN burst={burst} done={done} today={st['count']}/{DAILY_TARGET}")
+    nxt = st.get("next_at", 0)
+    print(f"RUN burst={burst} done={done} today={st['count']}/{DAILY_TARGET}" +
+          (f" next_in={int((nxt-time.time())/60)}m" if nxt and nxt > time.time() else ""))
 
 if __name__ == "__main__":
     os.makedirs(os.path.expanduser("~/tempo"), exist_ok=True)
