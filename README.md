@@ -7,6 +7,8 @@ and scheduled on-chain activity. Built as an automation example for
 Stripe+Paradigm's payments L1 ($500M raised, $5B valuation, no token yet —
 elo tau harus ngapain).
 
+📖 **Full walkthrough: [TUTORIAL.md](TUTORIAL.md)** — dari faucet sampe token lo bisa dipakai bayar gas, pake AI agent, zero SDK.
+
 ## Chain facts (bukan karangan, semua bisa lo verify)
 
 - Testnet "Moderato": chainId **42431** (mainnet 4217), RPC `https://rpc.moderato.tempo.xyz` (browser UA required, node-nya galak sama curl telanjang)
