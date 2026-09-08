@@ -9,6 +9,22 @@ elo tau harus ngapain).
 
 📖 **Full walkthrough: [TUTORIAL.md](TUTORIAL.md)** — dari faucet sampe token lo bisa dipakai bayar gas, pake AI agent, zero SDK.
 
+## Quickstart (git clone ini, 30 detik)
+
+```bash
+git clone https://github.com/urelkdubdqwr/TEMPO.git && cd TEMPO
+pip install -r requirements.txt
+
+python tempo.py status                                  # chain health
+python tempo.py faucet 0xYOURADDR                       # 1M+ test stablecoins, no captcha
+python tempo.py balance 0xYOURADDR                      # cek isi
+python tempo.py deploy-token ~/my.key "My Name" "SYM"   # issue TIP-20 sendiri (gas 8M!)
+python tempo.py mint ~/my.key 0xTOKEN 10000             # grant ISSUER_ROLE + mint
+python tempo.py fee-liq ~/my.key 0xTOKEN                # lane FeeAMM: token lo bisa buat bayar gas
+```
+
+`~/my.key` = file teks berisi private key (0600). Jangan commit, jangan paste ke chat mana pun termasuk ke agent lo sendiri — kasih path-nya.
+
 ## Chain facts (bukan karangan, semua bisa lo verify)
 
 - Testnet "Moderato": chainId **42431** (mainnet 4217), RPC `https://rpc.moderato.tempo.xyz` (browser UA required, node-nya galak sama curl telanjang)
