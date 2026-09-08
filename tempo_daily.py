@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Tempo testnet — human-like daily activity for wallet 227 (airdrop wallet).
-Cron every 30 min; each run decides whether a 'human' is at the keyboard.
-Target ~50 tx/day. Actions: send payment, receive payment, deploy token (once),
-deploy contract (rare), faucet top-up for sub-accounts.
+"""TEMPO — scheduled on-chain activity for a Tempo testnet account.
+Self-throttling runner: each tick decides whether to act (activity windows).
+Actions: send/receive payments, TIP-20 issuance + mint, contract deploys,
+faucet top-ups for related accounts.
 Never prints secrets. State: ~/tempo/human_state.json
 """
 import json, os, random, subprocess, time
@@ -71,9 +71,9 @@ def main():
     if st["count"] >= DAILY_TARGET:
         print("daily target reached, idle"); return
     if random.random() > human_hour_weight(h):
-        print(f"hour {h}UTC — 'human asleep', idle"); return
+        print(f"hour {h}UTC — outside activity window, idle"); return
 
-    # partners = other accounts from same phrase (idx1-3) — realistic self-rotation
+    # related accounts derived from the same phrase (idx1-3)
     if not st["partners"]:
         phrase = open(PHRASE).read().strip()
         ps = []
@@ -101,7 +101,7 @@ def main():
 
     def amount():
         r = random.random()
-        if r < 0.35: return random.choice([1,5,10,20,25,50,100])          # round = human
+        if r < 0.35: return random.choice([1,5,10,20,25,50,100])          # round amounts
         if r < 0.8: return round(random.uniform(0.5, 120), 2)
         return round(random.uniform(120, 900), 2)
 
@@ -136,7 +136,7 @@ def main():
         try:
             roll = random.random()
             if not st["token"] and roll < 0.3:
-                # TASK 5: create own stablecoin (once)
+                # create own stablecoin (once)
                 salt = os.urandom(32).hex()
                 fn = "createToken(string,string,address,address,bytes32)"
                 # encode manually via web3 abi
@@ -168,13 +168,13 @@ def main():
                 else:
                     nonce += 1; log("token create REVERT")
             elif roll < 0.55:
-                # TASK 3: send payment
+                # send payment
                 partner = random.choice(st["partners"])
                 token = random.choice(TOKENS)
                 ok, h2 = send(acct, partner, token, amount())
                 if ok: done += 1; st["count"] += 1; log(f"send {token[-4:]} -> {partner[:8]} tx {h2[:16]}")
             elif roll < 0.8:
-                # TASK 4: receive payment (partner -> me)
+                # receive payment (related account -> me)
                 pkey = None
                 phrase = open(PHRASE).read().strip()
                 p_acct = None
@@ -195,7 +195,7 @@ def main():
                         rc = w3.eth.wait_for_transaction_receipt(hh, timeout=45)
                         if rc["status"] == 1: done += 1; st["count"] += 1; log(f"recv {amt} from {partner[:8]} tx {hh.hex()[:16]}")
             else:
-                # TASK 8-ish: deploy a tiny contract (rare)
+                # deploy a tiny contract (rare)
                 if st["deploys"] < 3 and random.random() < 0.25:
                     # minimal: PUSH1 1, SSTORE, return empty runtime
                     tx = {"chainId":CHAIN_ID,"from":me,"to":b"","data":Web3.to_bytes(hexstr="0x6001600055600080600060006000f3"),
@@ -209,9 +209,9 @@ def main():
                     else: nonce += 1
         except Exception as e:
             log(f"ERR {str(e)[:120]}")
-        time.sleep(random.uniform(20, 180))   # human pauses between actions
+        time.sleep(random.uniform(20, 180))   # pause between actions
 
-    # occasional faucet top-up like a dev refilling test funds
+    # occasional faucet top-up
     if random.random() < 0.12:
         faucet(me)
     save(st)
