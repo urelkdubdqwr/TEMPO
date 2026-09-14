@@ -1,3 +1,5 @@
+<img src="assets/header.svg" alt="TEMPO — payments onchain, scheduled money" width="100%">
+
 # TEMPO
 
 > @onargudel udah muter-muter di chain-nya Stripe sebelum Stripe-nya ngundang lo. 🧾
