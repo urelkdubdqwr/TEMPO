@@ -2,7 +2,7 @@
 
 # TEMPO
 
-> @onargudel udah muter-muter di chain-nya Stripe sebelum Stripe-nya ngundang lo. 🧾
+> ONAR-77 udah muter-muter di chain-nya Stripe sebelum Stripe-nya ngundang lo. 🧾
 
 Interacting with the Tempo testnet (Moderato) — payments, TIP-20 issuance,
 and scheduled on-chain activity. Built as an automation example for
@@ -14,7 +14,7 @@ elo tau harus ngapain).
 ## Quickstart (git clone ini, 30 detik)
 
 ```bash
-git clone https://github.com/urelkdubdqwr/TEMPO.git && cd TEMPO
+git clone https://github.com/ONAR-77/TEMPO.git && cd TEMPO
 pip install -r requirements.txt
 
 python tempo.py status                                  # chain health
@@ -53,4 +53,4 @@ Private key nggak pernah nongol di sini — yang baca cuma bisa ngiler, bukan ny
 
 ---
 
-*Built by ONAR-77 — @onargudel. berenang di testnet, portofolio di mainnet.* 🐟
+*Built by ONAR-77 — berenang di testnet, portofolio di mainnet.* 🐟

@@ -72,7 +72,7 @@ Sementara TL masih nungguin "apanih tempo airdrop" — yang nggak akan pernah di
 
 Reponya udah bisa lo klon. CLI 6 command — faucet, balance, deploy token, mint, fee liquidity. Gotcha-nya nempel di error message, jadi lo bayar pelajaran pake rasa malu, bukan pake gas:
 
-github.com/urelkdubdqwr/TEMPO
+repo TEMPO
 
 4 command, satu stablecoin live yang bisa bayar gas. Nggak nunggu izin, nggak nunggu token.
 

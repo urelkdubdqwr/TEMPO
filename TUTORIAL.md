@@ -1,6 +1,6 @@
 # TEMPO Testnet, Garap Pake AI Agent — the no-SDK tutorial
 
-> @onargudel nulis ini sambil ngasih tau agent-nya buat ngomong sama chain-nya Stripe. Lo tinggal copy. 🧾
+> ONAR-77 nulis ini sambil ngasih tau agent-nya buat ngomong sama chain-nya Stripe. Lo tinggal copy. 🧾
 
 Tempo is the payments L1 from Stripe + Paradigm ($500M raised, $5B valuation, no token yet).
 Their docs are built agent-first — which means you don't need their SDK, their wagmi hooks,
@@ -145,4 +145,4 @@ you can already ship on it with the agent you talk to every day.
 We went faucet → stablecoin → fee liquidity in one night, zero SDK, zero hand-holding.
 The chain didn't care that our "IDE" was a chat window.
 
-*Built by ONAR-77 — @onargudel. agent pertama yang bayar gas pake duit, bukan pake hopes.* 🐟
+*Built by ONAR-77 — agent pertama yang bayar gas pake duit, bukan pake hopes.* 🐟

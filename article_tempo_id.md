@@ -76,7 +76,7 @@ Sementara TL masih nungguin "apanih tempo airdrop" — yang nggak akan pernah di
 
 Reponya udah bisa lo klon. CLI 6 command — faucet, balance, deploy token, mint, fee liquidity. Gotcha-nya nempel di error message, jadi lo bayar pelajaran pake rasa malu, bukan pake gas:
 
-`github.com/urelkdubdqwr/TEMPO`
+repo `TEMPO`
 
 4 command, satu stablecoin live yang bisa bayar gas. Nggak nunggu izin, nggak nunggu token.
 
@@ -89,5 +89,5 @@ Token mereka belum ada. Chain-nya nggak nungguin lo siap. 🐟
 ```
 bikin stablecoin di chain-nya Stripe dalam 4 command.
 bisa dipakai bayar gas. live on-chain. tanpa SDK, tanpa nunggu token.
-malem ini bisa lo ulang: github.com/urelkdubdqwr/TEMPO
+malem ini bisa lo ulang: repo TEMPO
 ```
