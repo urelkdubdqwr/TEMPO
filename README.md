@@ -1,4 +1,4 @@
-# STUDIO PINGGIR KASUR 🛏️
+# TEMPO
 
 > **TEMPO** — automation chain for Stripe payments L1: TIP-20 issuance, stablecoin-gas, scheduled on-chain ops.
 
