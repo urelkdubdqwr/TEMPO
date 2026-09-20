@@ -1,6 +1,4 @@
-<img src="assets/header.svg" alt="TEMPO — payments onchain, scheduled money" width="100%">
-
-# TEMPO
+# TEMPO — STUDIO PINGGIR KASUR 🛏️
 
 [![CI](https://github.com/urelkdubdqwr/TEMPO/actions/workflows/ci.yml/badge.svg)](https://github.com/urelkdubdqwr/TEMPO/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
