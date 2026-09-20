@@ -1,8 +1,8 @@
-# TEMPO — STUDIO PINGGIR KASUR 🛏️
+# STUDIO PINGGIR KASUR 🛏️
+
+> **TEMPO** — automation chain for Stripe payments L1: TIP-20 issuance, stablecoin-gas, scheduled on-chain ops.
 
 [![CI](https://github.com/urelkdubdqwr/TEMPO/actions/workflows/ci.yml/badge.svg)](https://github.com/urelkdubdqwr/TEMPO/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-> ONAR-77 udah muter-muter di chain-nya Stripe sebelum Stripe-nya ngundang lo. 🧾
 
 Interacting with the Tempo testnet (Moderato) — payments, TIP-20 issuance,
 and scheduled on-chain activity. Built as an automation example for
